@@ -76,7 +76,7 @@ export default function BudgetJustifier({ cities, selectedCityId }: BudgetJustif
     <Card padding="lg">
       <h3 className="mb-4 text-xl font-semibold text-slate-800 dark:text-zinc-100">Budget Justification Mode</h3>
       <p className="mb-6 text-sm text-slate-500 dark:text-zinc-400">
-        See how targeted AQI reductions can improve your city's rank and reduce health costs.
+        See how targeted AQI reductions can improve your city&apos;s rank and reduce health costs.
       </p>
 
       <div className="mb-6">

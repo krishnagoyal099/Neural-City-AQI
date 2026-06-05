@@ -101,6 +101,7 @@ export default function SearchBar({ cities, onSelectAction, placeholder = 'Searc
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           aria-label="Search for a city"
+          role="combobox"
           aria-expanded={isOpen}
           aria-autocomplete="list"
           className="w-full rounded-lg border border-slate-600 bg-slate-800 py-3 pl-10 pr-4 text-slate-100 placeholder-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30"

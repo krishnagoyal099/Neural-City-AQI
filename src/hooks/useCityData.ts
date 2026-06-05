@@ -43,6 +43,7 @@ export function useCityData() {
 
   /** Initial load */
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsLoading(true);
     loadData();
   }, [loadData]);

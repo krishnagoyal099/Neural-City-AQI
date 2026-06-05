@@ -29,6 +29,7 @@ export default function Gauge({
   // Animation effect
   useEffect(() => {
     if (!animated) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDisplayValue(value);
       return;
     }
