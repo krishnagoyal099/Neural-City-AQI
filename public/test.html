@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temperature Gauge</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 28px 32px 32px 32px;
+  width: 400px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+.gauge-wrapper {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  display: flex;
+  justify-content: center;
+}
+#gaugeCanvas {
+  width: 340px;
+  height: 230px;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="gauge-wrapper">
+    <canvas id="gaugeCanvas" width="680" height="460"></canvas>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('gaugeCanvas');
+const ctx = canvas.getContext('2d');
+const dpr = window.devicePixelRatio || 2;
+canvas.width = 680 * dpr;
+canvas.height = 460 * dpr;
+ctx.scale(dpr, dpr);
+
+const cx = 340;
+const cy = 300;
+const outerR = 230;
+const innerR = 165;
+const startAngle = Math.PI;
+const endAngle = 0;
+
+const pCanvas = document.createElement('canvas');
+pCanvas.width = 14;
+pCanvas.height = 14;
+const pCtx = pCanvas.getContext('2d');
+pCtx.strokeStyle = 'rgba(255,255,255,0.30)';
+pCtx.lineWidth = 1.8;
+pCtx.beginPath();
+pCtx.moveTo(0, 14);
+pCtx.lineTo(14, 0);
+pCtx.stroke();
+const stripePattern = ctx.createPattern(pCanvas, 'repeat');
+
+ctx.beginPath();
+ctx.arc(cx, cy, innerR - 1, startAngle, endAngle, false);
+ctx.arc(cx, cy, 60, endAngle, startAngle, true);
+ctx.closePath();
+ctx.fillStyle = '#f5f0e6';
+ctx.fill();
+
+function drawArcSegment(colorStart, colorEnd, a1, a2) {
+  const grad = ctx.createLinearGradient(
+    cx + Math.cos(a1) * outerR, cy + Math.sin(a1) * outerR,
+    cx + Math.cos(a2) * outerR, cy + Math.sin(a2) * outerR
+  );
+  grad.addColorStop(0, colorStart);
+  grad.addColorStop(1, colorEnd);
+
+  ctx.beginPath();
+  ctx.arc(cx, cy, outerR, a1, a2, false);
+  ctx.arc(cx, cy, innerR, a2, a1, true);
+  ctx.closePath();
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(cx, cy, outerR, a1, a2, false);
+  ctx.arc(cx, cy, innerR, a2, a1, true);
+  ctx.closePath();
+  ctx.fillStyle = stripePattern;
+  ctx.fill();
+}
+
+drawArcSegment('#8BC34A', '#CDDC39', Math.PI, Math.PI * 0.75);
+drawArcSegment('#CDDC39', '#FFC107', Math.PI * 0.75, Math.PI * 0.5);
+drawArcSegment('#FFC107', '#FF9800', Math.PI * 0.5, Math.PI * 0.25);
+drawArcSegment('#FF9800', '#EF5350', Math.PI * 0.25, 0);
+
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.fillStyle = '#777';
+ctx.font = '500 20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+
+const ticks = [0, 10, 20, 30, 40];
+ticks.forEach(v => {
+  const t = v / 40;
+  const angle = Math.PI - t * Math.PI;
+  const tx = cx + Math.cos(angle) * (outerR + 24);
+  const ty = cy + Math.sin(angle) * (outerR + 24);
+  ctx.fillText(v.toString(), tx, ty);
+});
+</script>
+</body>
+</html>

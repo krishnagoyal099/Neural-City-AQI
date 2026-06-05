@@ -1,0 +1,98 @@
+/* ============================================================
+   FILE: src/styles/globals.css
+   PURPOSE: Tailwind directives and custom CSS variables
+   DEPENDS ON: None
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* UI Palette mapped to CSS custom properties for theming */
+    --bg-primary: #0A0F1C;
+    --bg-secondary: #111827;
+    --bg-card: #1E293B;
+    --border: #334155;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --accent: #06B6D4;
+
+    /* AQI Category Colors */
+    --aqi-good: #059669;
+    --aqi-satisfactory: #65A30D;
+    --aqi-moderate: #CA8A04;
+    --aqi-poor: #EA580C;
+    --aqi-very-poor: #DC2626;
+    --aqi-severe: #7C2D12;
+
+    /* Font families populated by Next.js font vars */
+    --font-body: var(--font-inter);
+    --font-display: var(--font-space-grotesk);
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+  
+  :root {
+    --map-fill-start: #F1F5F9;
+    --map-fill-end: #CBD5E1;
+    --map-stroke: #FFFFFF;
+    --map-hover: #E2E8F0;
+  }
+  
+  .dark {
+    --tooltip-bg: #09090b;
+    --tooltip-border: rgba(255, 255, 255, 0.1);
+    --tooltip-text: #f4f4f5;
+    
+    --map-fill-start: rgba(255, 255, 255, 0.05);
+    --map-fill-end: rgba(255, 255, 255, 0.1);
+    --map-stroke: #27272a;
+    --map-hover: rgba(255, 255, 255, 0.15);
+  }
+}
+
+@layer utilities {
+  /* Screen-reader only utility for accessible data table fallbacks */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}

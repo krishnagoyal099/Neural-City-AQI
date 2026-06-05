@@ -1,0 +1,37 @@
+[
+  {
+    "groupId": "metros",
+    "groupName": "Metro Cities",
+    "cityIds": ["delhi", "mumbai", "kolkata", "chennai", "bangalore", "hyderabad"]
+  },
+  {
+    "groupId": "ncr",
+    "groupName": "National Capital Region",
+    "cityIds": ["delhi", "gurgaon", "noida"]
+  },
+  {
+    "groupId": "up-belt",
+    "groupName": "Uttar Pradesh Belt",
+    "cityIds": ["lucknow", "kanpur", "varanasi", "agra", "noida"]
+  },
+  {
+    "groupId": "south-clean",
+    "groupName": "Southern Clean Air Cities",
+    "cityIds": ["kochi", "coimbatore", "thiruvananthapuram", "visakhapatnam", "chennai", "bangalore"]
+  },
+  {
+    "groupId": "maharashtra",
+    "groupName": "Maharashtra Cities",
+    "cityIds": ["mumbai", "pune", "nagpur"]
+  },
+  {
+    "groupId": "gujarat",
+    "groupName": "Gujarat Cities",
+    "cityIds": ["ahmedabad", "surat"]
+  },
+  {
+    "groupId": "central",
+    "groupName": "Central India",
+    "cityIds": ["bhopal", "indore", "nagpur", "jaipur"]
+  }
+]

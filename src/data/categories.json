@@ -1,0 +1,18 @@
+{
+  "ranges": [
+    { "min": 0, "max": 50, "label": "Good", "color": "#059669" },
+    { "min": 51, "max": 100, "label": "Satisfactory", "color": "#65A30D" },
+    { "min": 101, "max": 200, "label": "Moderate", "color": "#CA8A04" },
+    { "min": 201, "max": 300, "label": "Poor", "color": "#EA580C" },
+    { "min": 301, "max": 400, "label": "Very Poor", "color": "#DC2626" },
+    { "min": 401, "max": 500, "label": "Severe", "color": "#7C2D12" }
+  ],
+  "advisories": {
+    "Good": { "shortText": "Air quality is satisfactory", "icon": "🌿" },
+    "Satisfactory": { "shortText": "Acceptable air quality", "icon": "🍃" },
+    "Moderate": { "shortText": "Sensitive groups may experience effects", "icon": "🌤️" },
+    "Poor": { "shortText": "Health effects for everyone", "icon": "⚠️" },
+    "Very Poor": { "shortText": "Health alert — serious effects", "icon": "🔴" },
+    "Severe": { "shortText": "Health emergency", "icon": "🚨" }
+  }
+}
